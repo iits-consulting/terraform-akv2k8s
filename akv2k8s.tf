@@ -18,10 +18,10 @@ resource "helm_release" "akv2k8s" {
         AZURE_TENANT_ID     = data.azurerm_client_config.current.tenant_id
         AZURE_CLIENT_ID     = local.service_principal_app_id
         AZURE_CLIENT_SECRET = local.service_principal_password
-      } }
+    } }
     akv2k8s = {
       controller = {
         logFormat = "json"
-      } }
+    } }
   }))]
 }
