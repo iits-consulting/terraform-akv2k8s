@@ -4,17 +4,17 @@ data "azurerm_client_config" "current" {
 data "azurerm_key_vault_secret" "akv2k8sClientId" {
   count        = var.keyvault_service_principal_from_keyvault ? 1 : 0
   key_vault_id = var.keyvault_id
-  name         = var.keyvault_service_principal_app_id_secret
+  name         = var.keyvault_service_principal_app_id_secret_name
 
-  depends_on = [errorcheck_is_valid.keyvault_service_principal_app_id_secret_validation]
+  depends_on = [errorcheck_is_valid.keyvault_service_principal_app_id_secret_name_validation]
 }
 
 data "azurerm_key_vault_secret" "akv2k8sClientSecret" {
   count        = var.keyvault_service_principal_from_keyvault ? 1 : 0
   key_vault_id = var.keyvault_id
-  name         = var.keyvault_service_principal_password_secret
+  name         = var.keyvault_service_principal_password_secret_name
 
-  depends_on = [errorcheck_is_valid.keyvault_service_principal_password_secret_validation]
+  depends_on = [errorcheck_is_valid.keyvault_service_principal_password_secret_name_validation]
 }
 
 data "azuread_service_principal" "akv2k8s" {

@@ -37,32 +37,32 @@ resource "errorcheck_is_valid" "keyvault_service_principal_selector_validation" 
   }
 }
 
-variable "keyvault_service_principal_app_id_secret" {
+variable "keyvault_service_principal_app_id_secret_name" {
   type        = string
   default     = ""
   description = "Azure Key Vault secret name for service principal ID."
 }
 
-variable "keyvault_service_principal_password_secret" {
+variable "keyvault_service_principal_password_secret_name" {
   type        = string
   default     = ""
   description = "Azure Key Vault secret name for service principal password."
 }
 
-resource "errorcheck_is_valid" "keyvault_service_principal_app_id_secret_validation" {
+resource "errorcheck_is_valid" "keyvault_service_principal_app_id_secret_name_validation" {
   name = "Keyvault Service Principal App ID Secret Validation"
   test = {
-    assert        = length(var.keyvault_service_principal_app_id_secret) != 0 || !var.keyvault_service_principal_from_keyvault
-    error_message = "The variable keyvault_service_principal_app_id_secret can not be empty if keyvault_service_principal_from_keyvault is enabled!"
+    assert        = length(var.keyvault_service_principal_app_id_secret_name) != 0 || !var.keyvault_service_principal_from_keyvault
+    error_message = "The variable keyvault_service_principal_app_id_secret_name can not be empty if keyvault_service_principal_from_keyvault is enabled!"
   }
   depends_on = [errorcheck_is_valid.keyvault_service_principal_selector_validation]
 }
 
-resource "errorcheck_is_valid" "keyvault_service_principal_password_secret_validation" {
+resource "errorcheck_is_valid" "keyvault_service_principal_password_secret_name_validation" {
   name = "Keyvault Service Principal Password Secret Validation"
   test = {
-    assert        = length(var.keyvault_service_principal_password_secret) != 0 || !var.keyvault_service_principal_from_keyvault
-    error_message = "The variable keyvault_service_principal_password_secret can not be empty if keyvault_service_principal_from_keyvault is enabled!"
+    assert        = length(var.keyvault_service_principal_password_secret_name) != 0 || !var.keyvault_service_principal_from_keyvault
+    error_message = "The variable keyvault_service_principal_password_secret_name can not be empty if keyvault_service_principal_from_keyvault is enabled!"
   }
   depends_on = [errorcheck_is_valid.keyvault_service_principal_selector_validation]
 }

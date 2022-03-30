@@ -31,7 +31,7 @@ module "akv2k8s" {
   keyvault_service_principal_create        = false
   keyvault_service_principal_from_keyvault = true
 
-  keyvault_service_principal_app_id_secret   = "ak2k8sAppId"
-  keyvault_service_principal_password_secret = "ak2k8sAppSecret"
+  keyvault_service_principal_app_id_secret_name_name   = "ak2k8sAppId"
+  keyvault_service_principal_password_secret_name_name = "ak2k8sAppSecret"
 }
 ```
